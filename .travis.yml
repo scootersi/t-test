@@ -10,8 +10,11 @@ jobs:
       script:
         - pytest
         - python hello.py 
-        
-    - language: node_js
+    
+    - if: branch = "dev"
+      env: 
+        STAGE=staging
+      language: node_js
       node_js: stable 
       before_install:
         - npm install gulp-cli 
