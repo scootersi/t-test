@@ -1,0 +1,26 @@
+jobs:
+  include:
+    - language: python
+      python: 3.9
+      name: Unit Test Job 
+      before_install:
+        - python3 --version
+        - pip3 install -U pip
+        - pip3 install -U pytest
+      script:
+        - pytest
+        - python hello.py 
+        
+    - language: node_js
+      node_js: stable 
+      before_install:
+        - npm config set @sap:registry https://npm.sap.com
+        - npm install gulp-cli 
+      env:
+        - STAGE=dev
+      script:
+        - gulp --version
+         
+    
+
+      
