@@ -12,27 +12,34 @@ jobs:
         - pytest
         - python hello.py 
     
-    - stage: Run
     - if: branch = "dev"
+    - stage: Dev Run
       env: 
         STAGE=dev
       language: node_js
       node_js: stable 
       before_install:
         - npm install gulp-cli 
-      env:
-        - STAGE=dev
       script:
         - gulp --version
     - if: branch = "staging"
+    - stage: Staging Run
       env: 
         STAGE=staging
       language: node_js
       node_js: stable 
       before_install:
         - npm install gulp-cli 
-      env:
-        - STAGE=dev
+      script:
+        - gulp --version
+    - if: branch = "master"
+    - stage: Master Run
+      env: 
+        STAGE=master
+      language: node_js
+      node_js: stable 
+      before_install:
+        - npm install gulp-cli 
       script:
         - gulp --version
          
