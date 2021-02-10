@@ -14,8 +14,6 @@ jobs:
     
     - if: branch = "dev"
     - stage: Dev Run
-      env: 
-        STAGE=dev
       language: node_js
       node_js: stable 
       before_install:
@@ -24,8 +22,6 @@ jobs:
         - gulp --version
     - if: branch = "staging"
     - stage: Staging Run
-      env: 
-        STAGE=staging
       language: node_js
       node_js: stable 
       before_install:
@@ -34,8 +30,6 @@ jobs:
         - gulp --version
     - if: branch = "master"
     - stage: Master Run
-      env: 
-        STAGE=master
       language: node_js
       node_js: stable 
       before_install:
