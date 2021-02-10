@@ -14,7 +14,6 @@ jobs:
     - language: node_js
       node_js: stable 
       before_install:
-        - npm config set @sap:registry https://npm.sap.com
         - npm install gulp-cli 
       env:
         - STAGE=dev
