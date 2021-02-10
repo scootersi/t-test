@@ -1,6 +1,7 @@
 jobs:
   include:
-    - language: python
+    - stage: Test
+      language: python
       python: 3.9
       name: Unit Test Job 
       before_install:
@@ -11,7 +12,19 @@ jobs:
         - pytest
         - python hello.py 
     
+    - stage: Run
     - if: branch = "dev"
+      env: 
+        STAGE=dev
+      language: node_js
+      node_js: stable 
+      before_install:
+        - npm install gulp-cli 
+      env:
+        - STAGE=dev
+      script:
+        - gulp --version
+    - if: branch = "staging"
       env: 
         STAGE=staging
       language: node_js
