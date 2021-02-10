@@ -13,7 +13,7 @@ jobs:
         - python hello.py 
     
     - if: branch = "dev"
-    - stage: Dev Run
+      stage: Dev Run
       language: node_js
       node_js: stable 
       before_install:
@@ -21,7 +21,7 @@ jobs:
       script:
         - gulp --version
     - if: branch = "staging"
-    - stage: Staging Run
+      stage: Staging Run
       language: node_js
       node_js: stable 
       before_install:
@@ -29,7 +29,7 @@ jobs:
       script:
         - gulp --version
     - if: branch = "master"
-    - stage: Master Run
+      stage: Master Run
       language: node_js
       node_js: stable 
       before_install:
